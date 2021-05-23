@@ -1,0 +1,96 @@
+<form [formGroup]="form" (ngSubmit)="registrarLibro()">
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white" style="width: 100px;">
+                    Título
+                </div>
+            </div>
+            <input type="text" class="form-control" formControlName="titulo">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="form-group col-md-5">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-white">
+                            Año
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" formControlName="anio">
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-7">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-white">
+                            Género
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" formControlName="genero">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="form-group col-md-7">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-white">
+                            Autor
+                        </div>
+                    </div>
+                    <select id=""  class="form-select" formControlName="idAutor">
+                        <option  [ngValue]="autor.idAutor" *ngFor = "let autor of bibliotecaService.listAutor">
+                            {{autor.nombre}}
+                        </option>
+                    </select>                   
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-5">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-white">
+                            Editorial
+                        </div>
+                    </div>
+                    <select id=""  class="form-select" formControlName="idEditorial">
+                        <option [ngValue]="editorial.idEditorial" *ngFor = "let editorial of bibliotecaService.listEditorial">
+                            {{editorial.nombre}}
+                        </option>
+                    </select> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="form-group col-md-5">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-white">
+                            # Páginas
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" formControlName="numPaginas">
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-7">
+            <div class="form-group">
+                <button class="btn btn-success btn-block" [disabled]="form.invalid">Registrar</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+    

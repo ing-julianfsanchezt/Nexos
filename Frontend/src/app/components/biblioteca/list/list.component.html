@@ -1,0 +1,17 @@
+<table class="table table-sm">
+    <thead style="text-align: center;">
+        <th>Título</th>
+        <th>Año</th>
+        <th>Género</th>
+        <th># Páginas</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let libro of bibliotecaService.listlibro" style="text-align: center;">
+            <td>{{ libro.titulo}}</td>
+            <td>{{ libro.anio}}</td>
+            <td>{{ libro.genero}}</td>
+            <td>{{ libro.numPaginas}}</td>
+        </tr>
+    </tbody>
+    
+</table>
