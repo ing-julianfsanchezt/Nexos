@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { libroModel } from '../models/libroModel';
 import { editorialModel } from '../models/editorialModel';
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class BibliotecaService {
 
   AppUrl = 'https://localhost:44339/';
-  ApiUrlLibro = 'api/Libro/';
+  ApiUrlLibro = 'api/Libro';
   ApiUrlEditorial = 'api/Editorial/';
   ApiUrlAutor = 'api/Autor';
   listlibro: libroModel[] = [];
@@ -20,8 +20,13 @@ export class BibliotecaService {
 
   constructor(private http: HttpClient) { }
 
-  registrarLibro(libro: libroModel):Observable<libroModel>{
-    return this.http.post<libroModel>(this.AppUrl + this.ApiUrlLibro, libroModel)
+  registrarLibro(libro: libroModel): Observable<boolean>{
+    let body = JSON.stringify(libro);
+    
+    let headers = new HttpHeaders({'Content-Type':'application/json'});
+
+    return this.http.post<boolean>(this.AppUrl + this.ApiUrlLibro, body, {headers: headers});
+    
   }
 
   obtenerLibros(){
